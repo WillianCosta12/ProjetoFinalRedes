@@ -9,5 +9,5 @@ O Dataset contém 2.708 artigos científicos na área de machine learning, class
 Os nós se tratam de cada artigo, identificado por um paper_id, com atributos: vetor de características (1433 dimensões) e o rótulo de categoria (1 das 7 classes).
 As arestas se tratam de direções apontando de um paper que cita para o citado (rede direcionada).
 
-#### Devido o tamanho do grafo não foi necessário a criação de subgrafos para análise.
+#### Devido o grafo não ser conectado, foi criado um subgrafo conectado com 2485 nós
 
