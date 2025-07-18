@@ -11,26 +11,23 @@ st.title("Network Analysis on Cora + Simulations")
 
 @st.cache_data
 def load_cora():
+    from pathlib import Path
+    import pandas as pd
+    import networkx as nx
+    import streamlit as st
+
     base = Path(__file__).parent
-    cites = base / "data" / "cora.cites"
-    content = base / "data" / "cora.content"
-    if not cites.exists():
-        st.error(f"Arquivo não encontrado: {cites}")
+    cites_fp = base / "data" / "cora.cites"
+    if not cites_fp.exists():
+        st.error(f"Arquivo não encontrado: {cites_fp}")
         return nx.Graph()
-    G = nx.read_edgelist(cites, create_using=nx.Graph(), nodetype=int)
+  
+    df = pd.read_csv(cites_fp, sep='\t', header=None, names=["cited", "citing"])
+    st.write("Linhas lidas em cora.cites:", len(df))
+  
+    G = nx.from_pandas_edgelist(df, source="citing", target="cited", create_using=nx.DiGraph())
+    st.write("Nós:", G.number_of_nodes(), "Arestas:", G.number_of_edges())
     return G
-
-base = Path(__file__).parent
-st.write("📁 Base:", base)
-st.write("📄 Conteúdo do base:", [p.name for p in base.iterdir()])
-
-data_dir = base / "data"
-st.write("Data existe?", data_dir.exists())
-if data_dir.exists():
-    st.write("📄 Conteúdo da pasta data:", [p.name for p in data_dir.iterdir()])
-
-cites = data_dir / "cora.cites"
-st.write("✔️ cites existe?", cites.exists(), "–", cites)
 
 G_cora = load_cora()
 n = G_cora.number_of_nodes()
