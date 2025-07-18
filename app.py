@@ -6,9 +6,9 @@ import community as community_louvain
 from networkx.algorithms import link_prediction
 
 st.set_page_config(layout="wide")
-st.title("🔬 Network Analysis on Cora + Simulations")
+st.title("Network Analysis on Cora + Simulations")
 
-@st.cache
+st.cache_data
 def load_cora():
     G = nx.read_edgelist("data/cora.cites", create_using=nx.Graph(), nodetype=int)
     return G
