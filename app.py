@@ -9,17 +9,12 @@ from networkx.algorithms import link_prediction
 st.set_page_config(layout="wide")
 st.title("Network Analysis on Cora + Simulations")
 
-@st.cache_data
 def load_cora():
-    from pathlib import Path
-    import pandas as pd
-    import networkx as nx
-    import streamlit as st
-
     base = Path(__file__).parent
     cites_fp = base / "data" / "cora.cites"
-    st.write("📦 Tamanho do arquivo (bytes):", cites_fp.stat().st_size)
-    st.write("📄 Primeiros caracteres:", cites_fp.read_text(encoding="utf-8", errors="replace")[:200])
+    df = pd.read_csv(cites_fp, sep='\t', header=None, names=["target", "source"])
+    G = nx.from_pandas_edgelist(df, source="source", target="target", create_using=nx.DiGraph())
+    return G
 
 G_cora = load_cora()
 n = G_cora.number_of_nodes()
