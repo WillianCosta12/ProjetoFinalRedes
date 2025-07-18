@@ -1,3 +1,4 @@
+from pathlib import Path
 import streamlit as st
 import pandas as pd
 import networkx as nx
@@ -10,7 +11,10 @@ st.title("Network Analysis on Cora + Simulations")
 
 st.cache_data
 def load_cora():
-    G = nx.read_edgelist("data/cora.cites", create_using=nx.Graph(), nodetype=int)
+   base = Path(__file__).parent
+    cites = base / 'data' / 'cora.cites'
+    content = base / 'data' / 'cora.content'
+    G = nx.read_edgelist(cites, create_using=nx.Graph(), nodetype=int)
     return G
 
 G_cora = load_cora()
