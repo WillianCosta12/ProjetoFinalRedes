@@ -24,3 +24,18 @@ Coeficiente de assortatividade (grau): -0.071365
 
 ### Histograma de distribuição empírica de grau
 ![Histograma](/imagens/Histograma.png)
+
+### Valores
+● Clustering local: {0: 0.3333333333333333, 1: 0, 2: 0, 4: 0.7}
+● Média dos clustering locais: 0.2376
+● Clustering global (transitividade): 0.0900
+● Strongly connected? False
+● Weakly connected? False
+● Número de SCC: 78
+● Número de WCC: 78
+
+### Visualização para exibir os nós mais importantes
+![Degree Centrality](/imagens/degree centrality.png)
+![Histograma](/imagens/Histograma.png)
+![Histograma](/imagens/Histograma.png)
+![Histograma](/imagens/Histograma.png)
