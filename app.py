@@ -20,6 +20,18 @@ def load_cora():
     G = nx.read_edgelist(cites, create_using=nx.Graph(), nodetype=int)
     return G
 
+base = Path(__file__).parent
+st.write("📁 Base:", base)
+st.write("📄 Conteúdo do base:", [p.name for p in base.iterdir()])
+
+data_dir = base / "data"
+st.write("Data existe?", data_dir.exists())
+if data_dir.exists():
+    st.write("📄 Conteúdo da pasta data:", [p.name for p in data_dir.iterdir()])
+
+cites = data_dir / "cora.cites"
+st.write("✔️ cites existe?", cites.exists(), "–", cites)
+
 G_cora = load_cora()
 n = G_cora.number_of_nodes()
 
