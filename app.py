@@ -41,6 +41,16 @@ st.subheader("📊 Estatísticas da Rede")
 st.write(f"- **Nós:** {G.number_of_nodes()} | **Arestas:** {G.number_of_edges()}")
 st.write(f"- **Densidade:** {nx.density(G):.4f}")
 
+if G.number_of_nodes() == 0:
+    st.warning("Grafo vazio — impossível calcular conectividade ou diâmetro.")
+else:
+    if nx.is_connected(G):
+        di = nx.diameter(G)
+    else:
+        GC = G.subgraph(max(nx.connected_components(G), key=len))
+        di = nx.diameter(GC)
+    st.write(f"Diâmetro: {di}")
+
 if nx.is_connected(G):
     di = nx.diameter(G)
     st.write(f"- **Diâmetro:** {di}")
