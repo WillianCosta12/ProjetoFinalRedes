@@ -19,7 +19,7 @@ def load_cora():
 
 G_cora = load_cora()
 n = G_cora.number_of_nodes()
-m_ba = min(2, n - 1) 
+m_ba = max(1, min(2, n - 1))
 
 model = st.sidebar.selectbox("Rede", ["Cora", "Erdos-Renyi", "Barabasi-Albert"])
 G = {
