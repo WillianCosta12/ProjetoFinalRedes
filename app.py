@@ -18,16 +18,8 @@ def load_cora():
 
     base = Path(__file__).parent
     cites_fp = base / "data" / "cora.cites"
-    if not cites_fp.exists():
-        st.error(f"Arquivo não encontrado: {cites_fp}")
-        return nx.Graph()
-  
-    df = pd.read_csv(cites_fp, sep='\t', header=None, names=["cited", "citing"])
-    st.write("Linhas lidas em cora.cites:", len(df))
-  
-    G = nx.from_pandas_edgelist(df, source="citing", target="cited", create_using=nx.DiGraph())
-    st.write("Nós:", G.number_of_nodes(), "Arestas:", G.number_of_edges())
-    return G
+    st.write("📦 Tamanho do arquivo (bytes):", cites_fp.stat().st_size)
+    st.write("📄 Primeiros caracteres:", cites_fp.read_text(encoding="utf-8", errors="replace")[:200])
 
 G_cora = load_cora()
 n = G_cora.number_of_nodes()
