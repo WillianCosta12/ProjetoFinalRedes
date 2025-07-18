@@ -45,10 +45,18 @@ st.write(f"- **Densidade:** {nx.density(G):.4f}")
 if G.number_of_nodes() == 0:
     st.warning("Grafo vazio — impossível calcular conectividade ou diâmetro.")
 else:
-    if nx.is_connected(G):
-        di = nx.diameter(G)
+    if G.is_directed():
+        if nx.is_weakly_connected(G):
+            GC = G.subgraph(max(nx.weakly_connected_components(G), key=len))
+            di = nx.diameter(GC.to_undirected())
+        else:
+            st.warning("Grafo dirigido não é fracamente conectado")
+            di = None
     else:
-        GC = G.subgraph(max(nx.connected_components(G), key=len))
+        if nx.is_connected(G):
+            GC = G
+        else:
+            GC = G.subgraph(max(nx.connected_components(G), key=len))
         di = nx.diameter(GC)
     st.write(f"Diâmetro: {di}")
 
