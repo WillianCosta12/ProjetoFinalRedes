@@ -42,8 +42,9 @@ Coeficiente de assortatividade (grau): -0.071365
 
 ### Detecção de comunidades/partições
 ![Método Louvain](/imagens/metodoLouvain.png)
-Modularidade obtida: 0.8053
-Níveis disponíveis: 4
+
+- Modularidade obtida: 0.8053
+- Níveis disponíveis: 4
 
 ### Visualização pelo Pyvis
 Link: https://williancosta12.github.io/ProjetoFinalRedes/cora
