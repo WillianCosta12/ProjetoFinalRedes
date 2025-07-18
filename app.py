@@ -5,7 +5,6 @@ import networkx as nx
 from pyvis.network import Network
 import community as community_louvain
 from networkx.algorithms import link_prediction
-from networkx.generators.random_graphs import connected_watts_strogatz_graph
 
 st.set_page_config(layout="wide")
 st.title("Network Analysis on Cora + Simulations")
@@ -20,13 +19,11 @@ def load_cora():
 
 G_cora = load_cora()
 n = G_cora.number_of_nodes()
-k_ws = min(4, n - 1)
 
-model = st.sidebar.selectbox("Rede", ["Cora", "Erdos-Renyi", "Watts-Strogatz", "Barabasi-Albert"])
+model = st.sidebar.selectbox("Rede", ["Cora", "Erdos-Renyi", "Barabasi-Albert"])
 G = {
     "Cora": G_cora,
     "Erdos-Renyi": nx.erdos_renyi_graph(n, p=0.01),
-    "Watts-Strogatz": connected_watts_strogatz_graph(n, k=k_ws, p=0.1, tries=100),
     "Barabasi-Albert": nx.barabasi_albert_graph(n, m=2)
 }[model]
 
