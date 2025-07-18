@@ -9,6 +9,14 @@ from networkx.algorithms import link_prediction
 st.set_page_config(layout="wide")
 st.title("Network Analysis on Cora + Simulations")
 
+base = Path(__file__).parent
+st.write("Base:", base)
+st.write("Conteúdo:", [p.name for p in base.iterdir()])
+
+data_dir = base / "data"
+st.write("Data folder exists?", data_dir.exists())
+st.write("Arquivos data:", [p.name for p in data_dir.iterdir()] if data_dir.exists() else [])
+
 st.cache_data
 def load_cora():
    base = Path(__file__).parent
