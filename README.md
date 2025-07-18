@@ -26,16 +26,27 @@ Coeficiente de assortatividade (grau): -0.071365
 ![Histograma](/imagens/Histograma.png)
 
 ### Valores
-● Clustering local: {0: 0.3333333333333333, 1: 0, 2: 0, 4: 0.7}
-● Média dos clustering locais: 0.2376
-● Clustering global (transitividade): 0.0900
-● Strongly connected? False
-● Weakly connected? False
-● Número de SCC: 78
-● Número de WCC: 78
+- Clustering local: {0: 0.3333333333333333, 1: 0, 2: 0, 4: 0.7}
+- Média dos clustering locais: 0.2376
+- Clustering global (transitividade): 0.0900
+- Strongly connected? False
+- Weakly connected? False
+- Número de SCC: 78
+- Número de WCC: 78
 
 ### Visualização para exibir os nós mais importantes
-![Degree Centrality](/imagens/degree centrality.png)
-![Histograma](/imagens/Histograma.png)
-![Histograma](/imagens/Histograma.png)
-![Histograma](/imagens/Histograma.png)
+![Degree Centrality](/imagens/degreeCentrality.png)
+![Eigenvector Centrality](/imagens/eigenvectorCentrality.png)
+![Closeness Centrality](/imagens/closenessCentrality.png)
+![Betweenness Centrality](/imagens/betweennessCentrality.png)
+
+### Detecção de comunidades/partições
+![Método Louvain](/imagens/metodoLouvain.png)
+Modularidade obtida: 0.8053
+Níveis disponíveis: 4
+
+### Visualização pelo Pyvis
+Link: https://williancosta12.github.io/ProjetoFinalRedes/cora
+
+### Visualização pelo StreamLit
+Link: https://projetofinalredes-66gm5r8vzbzyug5gpj3jfv.streamlit.app
