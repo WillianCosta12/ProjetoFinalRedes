@@ -12,10 +12,10 @@ st.title("Network Analysis on Cora + Simulations")
 st.cache_data
 def load_cora():
    base = Path(__file__).parent
-    cites = base / 'data' / 'cora.cites'
-    content = base / 'data' / 'cora.content'
-    G = nx.read_edgelist(cites, create_using=nx.Graph(), nodetype=int)
-    return G
+   cites = base / 'data' / 'cora.cites'
+   content = base / 'data' / 'cora.content'
+   G = nx.read_edgelist(cites, create_using=nx.Graph(), nodetype=int)
+   return G
 
 G_cora = load_cora()
 n = G_cora.number_of_nodes()
