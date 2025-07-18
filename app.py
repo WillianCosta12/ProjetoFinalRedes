@@ -19,13 +19,11 @@ def load_cora():
 
 G_cora = load_cora()
 n = G_cora.number_of_nodes()
-m_ba = max(1, min(2, n - 1))
 
-model = st.sidebar.selectbox("Rede", ["Cora", "Erdos-Renyi", "Barabasi-Albert"])
+model = st.sidebar.selectbox("Rede", ["Cora", "Erdos-Renyi"])
 G = {
     "Cora": G_cora,
-    "Erdos-Renyi": nx.erdos_renyi_graph(n, p=0.01),
-    "Barabasi-Albert": nx.barabasi_albert_graph(n, m=m_ba)
+    "Erdos-Renyi": nx.erdos_renyi_graph(n, p=0.01)
 }[model]
 
 st.sidebar.write(f"### Modelo: {model}")
